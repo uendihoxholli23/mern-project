@@ -1,6 +1,8 @@
 require("dotenv").config();
 
 const express = require("express"); //require express package
+const mongoose = require("mongoose");
+
 const workoutRoutes = require("./routes/workouts");
 
 //startup the express app
@@ -17,7 +19,15 @@ app.use((req, res, next) => {
 //route handler
 app.use("/api/workouts", workoutRoutes);
 
-//listen for request
-app.listen(process.env.PORT, () => {
-  console.log("Listening on port", process.env.PORT);
-});
+//connect to database
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    //listen for request
+    app.listen(process.env.PORT, () => {
+      console.log("connected to db & listening on port", process.env.PORT);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
