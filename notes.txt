@@ -1,0 +1,9 @@
+API EndPoints
+
+GET - /workout - gets all the workout documents
+POST - /workout - creates a new workout document
+GET - /workout:id - get a single workout document
+DELETE - /workout:id - deletes a single workout
+PATCH - /workout:id - updates a single workout
+
+----------------------------------------------
