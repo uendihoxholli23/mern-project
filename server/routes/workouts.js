@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+
 const {
   createWorkout,
   getWorkout,
@@ -8,6 +10,8 @@ const {
 } = require("../controllers/workoutController");
 
 const router = express.Router();
+// Enable CORS for all routes
+router.use(cors());
 
 //get all workouts
 router.get("/", getWorkouts);
